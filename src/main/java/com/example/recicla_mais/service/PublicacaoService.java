@@ -5,11 +5,9 @@ import com.example.recicla_mais.domain.Usuario;
 import com.example.recicla_mais.repository.PublicacaoRepository;
 import com.example.recicla_mais.repository.entity.PublicacaoEntity;
 import com.example.recicla_mais.service.mapper.PublicacaoMapper;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 

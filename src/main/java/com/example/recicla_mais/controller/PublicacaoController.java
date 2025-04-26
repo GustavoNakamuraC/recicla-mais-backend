@@ -40,7 +40,7 @@ public class PublicacaoController {
         return ResponseEntity.ok(resposta);
     }
 
-    @PostMapping("/curtir/{id}")
+    @PutMapping("/curtir/{id}")
     public ResponseEntity<Publicacao> curtir(@PathVariable Long id) {
         Publicacao resposta = service.curtir(id);
         return ResponseEntity.ok(resposta);

@@ -14,4 +14,8 @@ public class Publicacao {
     private Usuario usuario;
     private Integer curtidas;
     private String conteudo;
+
+    public void curtir() {
+        this.curtidas += 1;
+    }
 }

@@ -5,8 +5,7 @@ import com.example.recicla_mais.repository.entity.RespostaEntity;
 import com.example.recicla_mais.service.RespostaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
@@ -17,7 +16,8 @@ import java.util.List;
 public class RespostaController {
     private RespostaService service;
 
-    public ResponseEntity<Resposta> criar(Resposta resposta){
+    @PostMapping
+    public ResponseEntity<Resposta> criar(@RequestBody Resposta resposta){
         Resposta respostaSalva = service.criar(resposta);
 
         return ResponseEntity.created(
@@ -29,7 +29,8 @@ public class RespostaController {
         ).body(respostaSalva);
     }
 
-    public ResponseEntity<List<Resposta>> listarPorPublicacao(Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<List<Resposta>> listarPorPublicacao(@PathVariable Long id){
         List<Resposta> respostas = service.listarPorPublicacao(id);
 
         return ResponseEntity.ok(respostas);

@@ -28,4 +28,14 @@ public class UsuarioService {
 
         return UsuarioMapper.paraDomain(usuarioConsultado.get());
     }
+
+    public Usuario consultarPorEmail(String email){
+        Optional<UsuarioEntity> usuarioConsultado = repository.findById(id);
+
+        if (usuarioConsultado.isEmpty()){
+            throw new RuntimeException("Usuário não encontrado");
+        }
+
+        return UsuarioMapper.paraDomain(usuarioConsultado.get());
+    }
 }

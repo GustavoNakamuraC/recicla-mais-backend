@@ -23,6 +23,5 @@ public class RespostaEntity {
     private PublicacaoEntity publicacao;
 
     private String conteudo;
-
     private Integer curtidas;
 }

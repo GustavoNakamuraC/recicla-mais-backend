@@ -38,7 +38,7 @@ public class PublicacaoService {
         return PublicacaoMapper.paraDomain(repository.save(PublicacaoMapper.paraEntity(publicacao)));
     }
 
-    private Publicacao consultarPorId(Long id) {
+    public Publicacao consultarPorId(Long id) {
         Optional<PublicacaoEntity> publicacao = repository.findById(id);
 
         if(publicacao.isEmpty()) {

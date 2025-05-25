@@ -30,7 +30,7 @@ public class UsuarioService {
     }
 
     public Usuario consultarPorEmail(String email){
-        Optional<UsuarioEntity> usuarioConsultado = repository.findById(id);
+        Optional<UsuarioEntity> usuarioConsultado = repository.findByEmail(email);
 
         if (usuarioConsultado.isEmpty()){
             throw new RuntimeException("Usuário não encontrado");

@@ -5,7 +5,7 @@ import com.example.recicla_mais.repository.entity.RespostaEntity;
 
 public class RespostaMapper {
 
-    public Resposta paraDomain(RespostaEntity entity) {
+    public static Resposta paraDomain(RespostaEntity entity) {
         return Resposta.builder()
                 .id(entity.getId())
                 .usuario(UsuarioMapper.paraDomain(entity.getUsuario()))
@@ -14,7 +14,7 @@ public class RespostaMapper {
                 .build();
     }
 
-    public RespostaEntity paraEntity(Resposta domain) {
+    public static RespostaEntity paraEntity(Resposta domain) {
         return RespostaEntity.builder()
                 .id(domain.getId())
                 .usuario(UsuarioMapper.paraEntity(domain.getUsuario()))

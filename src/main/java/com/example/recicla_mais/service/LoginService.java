@@ -17,6 +17,8 @@ public class LoginService {
             throw new RuntimeException("Email ou senha inválidos.");
         }
 
+        loginDto.setUsuario(usuario);
+
         return loginDto;
     }
 }

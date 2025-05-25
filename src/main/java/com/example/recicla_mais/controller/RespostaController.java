@@ -14,7 +14,8 @@ import java.util.List;
 @RequestMapping("/respostas")
 @RequiredArgsConstructor
 public class RespostaController {
-    private RespostaService service;
+
+    private final RespostaService service;
 
     @PostMapping
     public ResponseEntity<Resposta> criar(@RequestBody Resposta resposta){

@@ -14,17 +14,16 @@ public class RespostaService {
     private final RespostaRepository repository;
     private final UsuarioService usuarioService;
     private final PublicacaoService publicacaoService;
-    private final RespostaMapper mapper;
 
     public Resposta criar(Resposta resposta){
         resposta.setUsuario(usuarioService.consultarPorId(resposta.getUsuario().getId()));
         resposta.setPublicacao(publicacaoService.consultarPorId(resposta.getPublicacao().getId()));
 
-        return mapper.paraDomain(repository.save(mapper.paraEntity(resposta)));
+        return RespostaMapper.paraDomain(repository.save(RespostaMapper.paraEntity(resposta)));
     }
 
     public List<Resposta> listarPorPublicacao(Long id){
         return repository.findAllByPublicacaoId(id)
-                .stream().map(mapper::paraDomain).toList();
+                .stream().map(RespostaMapper::paraDomain).toList();
     }
 }

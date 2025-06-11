@@ -28,12 +28,6 @@ public class PublicacaoController {
         ).body(resultado);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> apagar(@PathVariable Long id) {
-        service.apagar(id);
-        return ResponseEntity.noContent().build();
-    }
-
     @GetMapping
     public ResponseEntity<List<Publicacao>> listar() {
         List<Publicacao> resposta = service.listar();
@@ -44,5 +38,11 @@ public class PublicacaoController {
     public ResponseEntity<Publicacao> curtir(@PathVariable Long id) {
         Publicacao resposta = service.curtir(id);
         return ResponseEntity.ok(resposta);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> apagar(@PathVariable Long id) {
+        service.apagar(id);
+        return ResponseEntity.noContent().build();
     }
 }

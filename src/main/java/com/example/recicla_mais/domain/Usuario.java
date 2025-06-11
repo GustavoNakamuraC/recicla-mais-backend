@@ -15,4 +15,8 @@ public class Usuario {
     private String email;
     private Integer pontos;
     private String senha;
+
+    public void adicionarPontos(Usuario usuarioPontos){
+        this.pontos += usuarioPontos.getPontos();
+    }
 }

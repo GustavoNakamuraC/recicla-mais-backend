@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/usuarios")
 @RequiredArgsConstructor
@@ -33,6 +36,20 @@ public class UsuarioController {
         Usuario usuarioConsultado = service.consultarPorId(id);
 
         return ResponseEntity.ok(usuarioConsultado);
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<Usuario>> listar(){
+        List<Usuario> usuarios = service.listar();
+
+        return ResponseEntity.ok(usuarios);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> alterarPontuacao(@PathVariable Long id, @RequestBody Usuario novosPontos){
+        Usuario usuarioNovo = service.alterarPontuacao(id, novosPontos);
+
+        return ResponseEntity.ok(usuarioNovo);
     }
 }
 

@@ -7,6 +7,7 @@ import com.example.recicla_mais.service.mapper.UsuarioMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,7 +31,7 @@ public class UsuarioService {
     }
 
     public Usuario consultarPorEmail(String email){
-        Optional<UsuarioEntity> usuarioConsultado = repository.findById(id);
+        Optional<UsuarioEntity> usuarioConsultado = repository.findByEmail(email);
 
         if (usuarioConsultado.isEmpty()){
             throw new RuntimeException("Usuário não encontrado");
@@ -38,4 +39,19 @@ public class UsuarioService {
 
         return UsuarioMapper.paraDomain(usuarioConsultado.get());
     }
+
+    public Usuario alterarPontuacao(Long id, Usuario novosPontos) {
+        Usuario usuario = consultarPorId(id);
+
+        usuario.adicionarPontos(novosPontos);
+
+        return UsuarioMapper.paraDomain(
+                repository.save(UsuarioMapper.paraEntity(usuario)));
+    }
+
+    public List<Usuario> listar() {
+        return repository.findAll().stream()
+                .map(UsuarioMapper::paraDomain).toList();
+    }
+
 }

@@ -21,6 +21,7 @@ public class PublicacaoService {
     public Publicacao criar(Publicacao novaPublicacao) {
         Usuario usuario = usuarioService.consultarPorId(novaPublicacao.getUsuario().getId());
         novaPublicacao.setUsuario(usuario);
+        novaPublicacao.setCurtidas(0);
         return PublicacaoMapper.paraDomain(repository.save(PublicacaoMapper.paraEntity(novaPublicacao)));
     }
 

@@ -13,7 +13,7 @@ public class LoginService {
     public LoginDto validarCredenciais(LoginDto loginDto){
         Usuario usuario = usuarioService.consultarPorEmail(loginDto.getEmail());
 
-        if (!loginDto.getEmail().equals(usuario.getEmail()) || loginDto.getSenha().equals(usuario.getSenha())){
+        if (!loginDto.getEmail().equals(usuario.getEmail()) || !loginDto.getSenha().equals(usuario.getSenha())){
             throw new RuntimeException("Email ou senha inválidos.");
         }
 

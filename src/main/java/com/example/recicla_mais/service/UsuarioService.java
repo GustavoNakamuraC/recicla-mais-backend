@@ -16,6 +16,7 @@ public class UsuarioService {
     private final UsuarioRepository repository;
 
     public Usuario cadastrar(Usuario usuario){
+        usuario.setPontos(0);
         return UsuarioMapper.paraDomain(
                 repository.save(UsuarioMapper.paraEntity(usuario)));
     }

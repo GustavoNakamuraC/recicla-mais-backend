@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/login")
 @RequiredArgsConstructor
 public class LoginController {
-    private LoginService service;
+
+    private final LoginService service;
 
     @PostMapping
     public ResponseEntity<LoginDto> logar(@RequestBody LoginDto loginDto){

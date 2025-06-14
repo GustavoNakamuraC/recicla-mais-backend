@@ -16,7 +16,7 @@ public class Usuario {
     private Integer pontos;
     private String senha;
 
-    public void adicionarPontos(Usuario usuarioPontos){
-        this.pontos += usuarioPontos.getPontos();
+    public void adicionarPontos(Integer usuarioPontos){
+        this.pontos += usuarioPontos;
     }
 }

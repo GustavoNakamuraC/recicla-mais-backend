@@ -1,6 +1,7 @@
 package com.example.recicla_mais.service;
 
 import com.example.recicla_mais.domain.Resposta;
+import com.example.recicla_mais.domain.Usuario;
 import com.example.recicla_mais.repository.RespostaRepository;
 import com.example.recicla_mais.service.mapper.RespostaMapper;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +17,11 @@ public class RespostaService {
     private final PublicacaoService publicacaoService;
 
     public Resposta criar(Resposta resposta){
-        resposta.setUsuario(usuarioService.consultarPorId(resposta.getUsuario().getId()));
+        Usuario usuario = usuarioService.consultarPorId(resposta.getUsuario().getId());
+
+        usuarioService.alterarPontuacao(usuario, 5);
+
+        resposta.setUsuario(usuario);
         resposta.setPublicacao(publicacaoService.consultarPorId(resposta.getPublicacao().getId()));
 
         return RespostaMapper.paraDomain(repository.save(RespostaMapper.paraEntity(resposta)));

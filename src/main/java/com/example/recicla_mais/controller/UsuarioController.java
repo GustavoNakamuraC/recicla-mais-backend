@@ -44,12 +44,5 @@ public class UsuarioController {
 
         return ResponseEntity.ok(usuarios);
     }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Usuario> alterarPontuacao(@PathVariable Long id, @RequestBody Usuario novosPontos){
-        Usuario usuarioNovo = service.alterarPontuacao(id, novosPontos);
-
-        return ResponseEntity.ok(usuarioNovo);
-    }
 }
 

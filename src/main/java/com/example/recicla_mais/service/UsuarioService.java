@@ -41,9 +41,7 @@ public class UsuarioService {
         return UsuarioMapper.paraDomain(usuarioConsultado.get());
     }
 
-    public Usuario alterarPontuacao(Long id, Usuario novosPontos) {
-        Usuario usuario = consultarPorId(id);
-
+    public Usuario alterarPontuacao(Usuario usuario, Integer novosPontos) {
         usuario.adicionarPontos(novosPontos);
 
         return UsuarioMapper.paraDomain(
